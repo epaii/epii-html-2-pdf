@@ -1,0 +1,19 @@
+{
+  "name": "epii/html2pdf",
+  "description": "epii/tiny-app 的增强版本，融入模板引擎，及ui",
+  "authors": [
+    {
+      "name": "MrRen Epii",
+      "email": "543169072@qq.com"
+    }
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=5.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "epii\\html\\tools\\": "src/"
+    }
+  }
+}

@@ -79,6 +79,26 @@ class html2pdf
         return self::curl_post(self::$_server_api . "&app=index@query", ["task_id" => $taskId]);
     }
 
+    public static function handlePost()
+    {
+
+        $post = json_decode(file_get_contents("php://input"), true);
+
+
+        //file_put_contents(__DIR__."/../test/a.php",var_export($post,true));
+
+        return new PdfPagesResult($post);
+    }
+
+
+    public static function merge($pdfs)
+    {
+        if (is_array($pdfs)) {
+            $pdfs = implode(",", $pdfs);
+        }
+
+        return self::curl_post(self::$_server_api . "&app=merge@sync", ["pages" => $pdfs]);
+    }
 
     private static function curl_post($url, $post_data)
     {

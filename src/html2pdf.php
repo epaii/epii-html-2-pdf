@@ -13,7 +13,7 @@ class html2pdf
 
     const ASYN = 2;
     const SYNC = 1;
-    private static $_server_api = "http://localhost:63342/html2pdf/api/index.php?_ijt=s6amhkpgi07n50f7ntqnetio29";
+    private static $_server_api = "http://html2pdf.wszx.cc/?";
 
     private static $secret_key = null;
 

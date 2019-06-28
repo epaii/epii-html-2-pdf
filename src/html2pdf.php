@@ -124,7 +124,7 @@ class html2pdf
         curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
         //执行命令
         $data = curl_exec($curl);
-         var_dump($data);
+       //  var_dump($data);
         //关闭URL请求
         curl_close($curl);
         if (!$data) return false;

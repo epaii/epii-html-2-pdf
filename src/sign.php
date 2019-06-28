@@ -6,7 +6,7 @@
  * Time: 1:26 PM
  */
 
-namespace epii\sign;
+namespace epii\html\tools;
 
 class sign
 {

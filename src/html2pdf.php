@@ -8,7 +8,6 @@
 
 namespace epii\html\tools;
 
-use epii\sign\sign;
 
 class html2pdf
 {

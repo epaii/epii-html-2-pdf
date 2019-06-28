@@ -10,3 +10,4 @@ require_once __DIR__ . "/html2pdf.php";
 require_once __DIR__ . "/PdfPages.php";
 require_once __DIR__ . "/PdfPagesResult.php";
 require_once __DIR__ . "/PdfPagesResultAsyn.php";
+require_once __DIR__ . "/sign.php";

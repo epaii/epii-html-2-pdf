@@ -8,6 +8,8 @@
 
 namespace epii\html\tools;
 
+use epii\sign\sign;
+
 class html2pdf
 {
 
@@ -17,8 +19,11 @@ class html2pdf
 
     private static $secret_key = null;
 
-    public static function init($secret_key, $server_api = null)
+    private static $appid = 0;
+
+    public static function init($appid, $secret_key, $server_api = null)
     {
+        self::$appid = $appid;
         if ($server_api)
             self::$_server_api = stripos($server_api, "?") > 0 ? $server_api : ($server_api . "?");
 
@@ -102,7 +107,8 @@ class html2pdf
 
     private static function curl_post($url, $post_data)
     {
-        $post_data["sign"] = md5(serialize($post_data) . self::$secret_key);
+        $post_data["appid"] = self::$appid;
+        sign::encode($post_data, self::$secret_key);
         $curl = curl_init();
         //设置抓取的url
         curl_setopt($curl, CURLOPT_URL, $url);

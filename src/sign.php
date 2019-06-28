@@ -14,11 +14,12 @@ class sign
     {
 
         if (is_array($data)) {
-            asort($data);
+            ksort($data);
             $string = "";
             foreach ($data as $key => $value) {
                 $string .= $key . "=" . $value . "&";
             }
+
 
             $data["sign"] = md5($string . $secret_key);
             return $data["sign"];

@@ -85,11 +85,22 @@ class html2pdf
 
     public static function handlePost()
     {
+        $string = file_get_contents("php://input");
 
-        $post = json_decode(file_get_contents("php://input"), true);
+        if (!$string) {
+            if (isset($_POST["body"])) {
+                $string = $_POST["body"];
+            }
+        }
+        if (!$string) {
+            return false;
+        }
+
+        $post = json_decode($string, true);
 
 
-        //file_put_contents(__DIR__."/../test/a.php",var_export($post,true));
+
+       // file_put_contents(__DIR__."/../test/a.php",var_export($post,true));
 
         return new PdfPagesResult($post);
     }
@@ -108,7 +119,7 @@ class html2pdf
     {
         $post_data["appid"] = self::$appid;
         sign::encode($post_data, self::$secret_key);
-       // print_r($post_data);
+        // print_r($post_data);
         $curl = curl_init();
         //设置抓取的url
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -123,7 +134,7 @@ class html2pdf
         curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
         //执行命令
         $data = curl_exec($curl);
-       //  var_dump($data);
+        //  var_dump($data);
         //关闭URL请求
         curl_close($curl);
         if (!$data) return false;

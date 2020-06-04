@@ -17,6 +17,13 @@ class PdfPages
     {
         $this->pages[] = ["url" => $url, "options" => $options, "page_id" => $page_id];
     }
+    public function addImagePage(string $url, $page_id = 0,array $options = null)
+    {
+        if(!$options){
+            $options = [];
+        }
+        $this->pages[] = ["url" => $url, "options" => array_merge(["fullPage"=>true,"create_type"=>"image","omitBackground"=>true],$options), "page_id" => $page_id];
+    }
 
     public function getPages()
     {

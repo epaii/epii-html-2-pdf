@@ -29,6 +29,18 @@ class html2pdf
         self::$secret_key = $secret_key;
     }
 
+    public static function innerimgs($url=null,$base64=null){
+        if($url){
+            $data =["url"=>$url];
+        }else {
+            $data =["base64"=>$base64];
+        }
+        return self::curl_post(self::$_server_api . "&app=innerimgs", $data);
+    }
+    public static function callApi($app,$data){
+        
+        return self::curl_post(self::$_server_api . "&app=".$app, $data);
+    }
 
     public static function create($pdfPages, $type = 1, $notice_url = null)
     {

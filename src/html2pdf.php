@@ -37,6 +37,15 @@ class html2pdf
         }
         return self::curl_post(self::$_server_api . "&app=innerimgs", $data);
     }
+    public static function pages2Imgs($url=null,$base64=null,$width=1000){
+        if($url){
+            $data =["url"=>$url];
+        }else {
+            $data =["base64"=>$base64];
+        }
+        $data["width"] = $width;
+        return self::curl_post(self::$_server_api . "&app=page_imgs", $data);
+    }
     public static function callApi($app,$data){
         
         return self::curl_post(self::$_server_api . "&app=".$app, $data);
